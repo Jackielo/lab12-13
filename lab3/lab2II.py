@@ -1,4 +1,4 @@
-word_input = input('Enter the word: ')
+word_input = input.lower('Enter the word: ')
 
 if(word_input == word_input[::-1]):
   print("True")
