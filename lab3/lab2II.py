@@ -1,0 +1,1 @@
+word_input = input('Enter the word: ')
