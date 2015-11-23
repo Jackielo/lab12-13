@@ -15,8 +15,9 @@ import urllib2
 req = urllib2.Request('http://ec2-52-30-7-5.eu-west-1.compute.amazonaws.com:81/key')
 f = urllib2.urlopen(req)
 code = f.read()
-access_key_id = code[0:20]
-secret_access_key = code[21:-1]
+access, key = code.split(":")
+access_key_id = access
+secret_access_key = key
 
 print(access_key_id)
 print(secret_access_key)
