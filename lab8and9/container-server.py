@@ -63,9 +63,8 @@ def images_index():
 def containers_show(id):
     """
     Inspect specific container
-
     """
-    output = docker('inspect' + id)
+    output = docker('inspect ' + id)
     resp = json.dumps(docker_ps_to_array(output))
 
     return Response(response=resp, mimetype="application/json")
@@ -74,9 +73,11 @@ def containers_show(id):
 def containers_log(id):
     """
     Dump specific container logs
-
     """
-    resp = ''
+
+    output = docker('logs -f ' + id)
+    resp = json.dumps(docker_logs_to_object(id, output))
+
     return Response(response=resp, mimetype="application/json")
 
 
