@@ -19,7 +19,7 @@ access_key_id = code[0:20]
 secret_access_key = code[21:-1]
 
 print(access_key_id)
-print(secret_acess_key)
+print(secret_access_key)
 
 # Set up a connection to the AWS service.
 conn = boto.sqs.connect_to_region("eu-west-1", aws_access_key_id=access_key_id, aws_secret_access_key=secret_access_key)
