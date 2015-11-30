@@ -23,6 +23,6 @@ conn = boto.sqs.connect_to_region("eu-west-1", aws_access_key_id=access_key_id, 
 rs = conn.get_all_queues()
 print sys.argv[1]
 for q in rs:
-  if q.id == sys.argv[1]:
+  if q.id.split("/")[-1] == sys.argv[1]:
     print q.id
     conn.delete_queue(q)
