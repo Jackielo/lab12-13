@@ -9,4 +9,4 @@ conn	=	get_conn()
 for	q	in	conn.get_all_queues():
 all.append(q.name)
 resp	=	json.dumps(all)
-return	Response(response=resp,	mimetype="application/json")smfa
+return	Response(response=resp,	mimetype="application/json")
