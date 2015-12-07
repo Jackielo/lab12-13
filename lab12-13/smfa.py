@@ -10,3 +10,6 @@ for	q	in	conn.get_all_queues():
 all.append(q.name)
 resp	=	json.dumps(all)
 return	Response(response=resp,	mimetype="application/json")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0",port=8080, debug=True)
