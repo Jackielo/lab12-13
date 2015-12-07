@@ -9,7 +9,15 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-  return "Hello?"
+  return """
+  Create: curl	-X	POST	-H	'Content-Type:	application/json'	http://localhost:5000/queues	-d	'{"name":	"my-queue"}'
+  Delete: curl	-X	DELETE	-H	'Accept:	application/json'	http://localhost:5000/queues/<mytestqueue>
+  Get number of messages: curl	-X	GET	-H	'Accept:	application/json'	http://localhost:5000/queues/<mytestqueue>/msgs/count
+  Write a message: curl	-s	-X	POST	-H	'Accept:	application/json'	http://localhost:5000/queues/<mytestqueue>/msgs	-d	
+  '{"content":	"this	is	the	message	I	want	to	put	on	the	queue"}'
+  Read a message: curl	-X	GET	-H	'Accept:	application/json'	http://localhost:5000/queues/<mytestqueue>/msgs
+  Read and erase a message: curl	-X	DELETE	-H	'Accept:	application/json'	http://localhost:5000/queues/<mytestqueue>/msgs
+  """
 
 @app.route('/queues',	methods=['GET'])
 def	queues_index():
@@ -25,4 +33,4 @@ def	queues_index():
   return	Response(response=resp,	mimetype="application/json")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=8080, debug=True)
+    app.run(host="0.0.0.0",port=5000, debug=True)
